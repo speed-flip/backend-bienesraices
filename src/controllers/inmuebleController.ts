@@ -3,13 +3,21 @@ import { Response, Request } from 'express';
 
 import Inmueble from '../models/Inmueble';
 import { MulterFile } from '../lib/multer';
+import { Inmueble as InmuebleI } from '../interfaces';
 
 export async function getInmuebles(req: Request, res: Response) {
-  const inmuebles = await Inmueble.find();
+  let inmuebles: InmuebleI[] = [];
+
+  if (req.query.tipo) {
+    inmuebles = await Inmueble.find().where('tipo').equals(req.query.tipo);
+  } else {
+    inmuebles = await Inmueble.find();
+  }
   res.status(200).json({
     msg: 'Consulta exitosa',
     total_registros: inmuebles.length,
     inmuebles,
+    params: req.query,
     errorResponse: {
       error: false,
       code: 200,
