@@ -146,3 +146,30 @@ export async function addFavorite(req: Request, res: Response) {
   }
 }
 
+export async function getFavorites(req: Request, res: Response) {
+  const user = await Usuario.findById(req.user?._id);
+  if (!user) {
+    res.status(400).json({
+      errorResponse: {
+        error: false,
+        code: 400,
+        msg: 'Usuario no encontrado',
+        details: '',
+      }
+    });
+    return;
+  }
+
+  res.status(200).json({
+    msg: 'Consulta exitosa',
+    favorites: user.favorites,
+    total_registros: user.favorites.length,
+    errorResponse: {
+      error: false,
+      code: 200,
+      msg: '',
+      details: '',
+    }
+  });
+
+}
