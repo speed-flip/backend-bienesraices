@@ -19,6 +19,32 @@ export async function getInmuebles(req: Request, res: Response) {
   });
 }
 
+export async function getInmuebleById(req: Request, res: Response) {
+  const inmuebles = await Inmueble.findById(req.params.id);
+
+  if (!inmuebles) {
+    res.status(404).json({
+      errorResponse: {
+        error: true,
+        code: 404,
+        msg: 'El inmueble no fue encontrado',
+        details: '',
+      },
+    });
+  }
+
+  res.status(200).json({
+    msg: 'Consulta exitosa',
+    inmuebles,
+    errorResponse: {
+      error: false,
+      code: 200,
+      msg: '',
+      details: '',
+    },
+  });
+}
+
 export async function crearInmueble(req: Request, res: Response) {
   const files = req.files as MulterFile[];
 
