@@ -8,3 +8,12 @@ export interface User {
   password: string,
   save: () => void,
 }
+
+export interface Inmueble {
+  _id?: Schema.Types.ObjectId,
+  nombre: string
+  descripcion: string
+  sanitarios: number
+  habitaciones: number
+  imagenes: any
+}
