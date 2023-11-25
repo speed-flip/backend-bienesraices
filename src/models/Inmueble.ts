@@ -12,6 +12,10 @@ const inmuebleSchema = new Schema<Inmueble>({
     type: String,
     required: true,
   },
+  tipo: {
+    type: String,
+    required: true,
+  },
   sanitarios: {
     type: Number,
     required: true,
