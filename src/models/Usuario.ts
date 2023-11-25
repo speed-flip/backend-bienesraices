@@ -24,6 +24,10 @@ const userSchema = new Schema<User>({
     required: true,
     trim: true,
   },
+  favorites: {
+    type: Array,
+    default: [],
+  }
 }, {
   timestamps: true,
   versionKey: false,

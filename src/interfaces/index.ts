@@ -6,6 +6,7 @@ export interface User {
   username: string
   email: string,
   password: string,
+  favorites: any
   save: () => void,
 }
 

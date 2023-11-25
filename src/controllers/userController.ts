@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Request, Response } from 'express';
 
 import Usuario from '../models/Usuario';
 import generateJWT from '../helpers/generateJWT';
+import Inmueble from '../models/Inmueble';
 
 export async function createUser(req: Request, res: Response) {
   // Avoid duplicate users
@@ -83,6 +85,62 @@ export async function login(req: Request, res: Response) {
         code: 400,
         msg: 'La contraseña ingresada no es correcta',
         details: '',
+      }
+    });
+  }
+}
+
+export async function addFavorite(req: Request, res: Response) {
+  console.log(req.params.inmuebleId);
+  const casa = await Inmueble.findById(req.params.inmuebleId);
+
+  if (!casa) {
+    res.status(400).json({
+      errorResponse: {
+        error: true,
+        code: 400,
+        msg: 'Este inmueble no existe',
+        details: '',
+      }
+    });
+    return;
+  }
+
+  try {
+    const userFound = await Usuario.findById(req.user?._id);
+    if (!userFound) {
+      res.status(400).json({
+        errorResponse: {
+          error: true,
+          code: 400,
+          msg: 'El usuario no esta registrado',
+          details: '',
+        }
+      });
+    }
+
+    await Usuario.findByIdAndUpdate(req.user?._id, {
+      favorites: [...userFound!.favorites, casa],
+    });
+
+    res.status(200).json({
+      msg: 'Inmueble añadido a favoritos',
+      errorResponse: {
+        error: false,
+        code: 200,
+        msg: '',
+        details: '',
+      }
+    });
+
+  } catch (error: any) {
+    console.log(error);
+    res.status(400).json({
+      errorResponse: {
+        error: true,
+        code: 400,
+        msg: 'Se produjo un error en el servidor',
+        details: error.message,
       }
     });
   }
