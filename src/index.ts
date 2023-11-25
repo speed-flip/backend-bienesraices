@@ -1,7 +1,7 @@
 import app from './app';
 import connectDB from './config/conectarDB';
 
-import authRoutes from './routes/authRoutes';
+import authRoutes from './routes/userRoutes';
 import inmuebleRoutes from './routes/inmuebleRoutes';
 
 connectDB();
