@@ -33,6 +33,10 @@ const inmuebleSchema = new Schema<Inmueble>({
     type: String,
     required: true,
   },
+  direccion: {
+    type: String,
+    required: true,
+  },
   imagenes: {
     type: Array<string>,
     default: ['/img'],

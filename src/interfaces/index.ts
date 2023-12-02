@@ -19,5 +19,6 @@ export interface Inmueble {
   habitaciones: number
   precio: number
   estado_propiedad: string
+  direccion: string
   imagenes: any
 }
