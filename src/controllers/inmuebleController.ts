@@ -63,7 +63,7 @@ export async function crearInmueble(req: Request, res: Response) {
     return;
   }
 
-  const imagenes: string[] = files.map((file: MulterFile) => `/public/img/${file.filename}`);
+  const imagenes: string[] = files.map((file: MulterFile) => `/img/${file.filename}`);
   const nuevoInmueble = { ...req.body, imagenes };
 
   try {

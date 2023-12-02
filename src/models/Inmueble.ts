@@ -24,6 +24,15 @@ const inmuebleSchema = new Schema<Inmueble>({
     type: Number,
     required: true,
   },
+  precio: {
+    type: Number,
+    required: true,
+    trim: true,
+  },
+  estado_propiedad: {
+    type: String,
+    required: true,
+  },
   imagenes: {
     type: Array<string>,
     default: ['/img'],

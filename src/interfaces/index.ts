@@ -17,5 +17,7 @@ export interface Inmueble {
   tipo: string
   sanitarios: number
   habitaciones: number
+  precio: number
+  estado_propiedad: string
   imagenes: any
 }
