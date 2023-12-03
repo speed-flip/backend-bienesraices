@@ -103,3 +103,13 @@ export async function crearInmueble(req: Request, res: Response) {
     },
   });
 }
+
+export async function searchInmueble(req: Request, res: Response) {
+  const { q } = req.query;
+  const inmuebles = await Inmueble.find({ nombre: { $regex: q, $options: 'i' } });
+  res.status(200).json({
+    msg: 'Consulta exitosa',
+    total_registros: inmuebles.length,
+    inmuebles,
+  });
+}
