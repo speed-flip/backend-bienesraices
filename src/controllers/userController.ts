@@ -12,11 +12,11 @@ export async function createUser(req: Request, res: Response) {
   const userFound = await Usuario.findOne({ email });
 
   if (userFound) {
-    res.status(400).json({
+    res.json({
       errorResponse: {
         error: true,
         code: 400,
-        msg: 'Este email ya esta registrado en BienesRaices',
+        msg: 'Este email ya esta registrado en BienesRaices.',
         details: 'Intente recuperar su contraseña si olvidó sus credenciales',
       }
     });
@@ -28,13 +28,7 @@ export async function createUser(req: Request, res: Response) {
     const userSaved = await user.save();
     res.status(200).json({
       usuario: userSaved,
-      msg: 'Cuenta creada correctamente',
-      errorResponse: {
-        error: false,
-        code: 200,
-        msg: '',
-        details: '',
-      },
+      msg: 'Cuenta creada correctamente. Inicie Sesión',
     });
   } catch (error: any) {
     console.log(error);
@@ -55,7 +49,7 @@ export async function login(req: Request, res: Response) {
   const usuario = await Usuario.findOne({ email });
 
   if (usuario === null) {
-    res.status(400).json({
+    res.json({
       errorResponse: {
         error: true,
         code: 400,
@@ -71,15 +65,9 @@ export async function login(req: Request, res: Response) {
       usuario,
       msg: 'Inicio de sesión exitoso',
       token: generateJWT(usuario.id),
-      errorResponse: {
-        error: false,
-        code: 200,
-        msg: '',
-        details: '',
-      },
     });
   } else {
-    res.status(400).json({
+    res.json({
       errorResponse: {
         error: true,
         code: 400,

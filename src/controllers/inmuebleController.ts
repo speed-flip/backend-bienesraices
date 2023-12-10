@@ -2,8 +2,11 @@
 import { Response, Request } from 'express';
 
 import Inmueble from '../models/Inmueble';
-import { MulterFile } from '../lib/multer';
 import { Inmueble as InmuebleI } from '../interfaces';
+
+// interface MulterRequest extends Request {
+//   files: any; // o usa el tipo correcto proporcionado por Multer
+// }
 
 export async function getInmuebles(req: Request, res: Response) {
   let inmuebles: InmuebleI[] = [];
@@ -54,16 +57,18 @@ export async function getInmuebleById(req: Request, res: Response) {
 }
 
 export async function crearInmueble(req: Request, res: Response) {
-  const files = req.files as MulterFile[];
+  const files = req.files as Express.Multer.File[];
 
-  if (!files || files.length == 0) {
-    res.status(404).json({
+  if (!req.files || req.files.length == 0) {
+    res.json({
       msg: 'Faltan las imagenes',
     });
     return;
   }
 
-  const imagenes: string[] = files.map((file: MulterFile) => `/img/${file.filename}`);
+  console.log(req.files);
+
+  const imagenes: string[] = files.map((file: any) => `/img/${file.filename}`);
   const nuevoInmueble = { ...req.body, imagenes };
 
   try {

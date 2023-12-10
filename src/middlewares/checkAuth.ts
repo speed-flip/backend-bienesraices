@@ -35,7 +35,7 @@ async function checkAuth(req: Request, res: Response, next: NextFunction) {
   }
 
   if (!token) {
-    res.status(404).json({
+    res.json({
       errorResponse: {
         error: true,
         code: 404,

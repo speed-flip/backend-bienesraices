@@ -5,7 +5,7 @@ async function checkIsAdmin(req: Request, res: Response, next: NextFunction) {
   const token = req.headers.authorization?.split(' ')[1];
 
   if (!token) {
-    res.status(404).json({
+    res.json({
       errorResponse: {
         error: true,
         code: 404,
@@ -19,7 +19,7 @@ async function checkIsAdmin(req: Request, res: Response, next: NextFunction) {
   if (req.user?.email == 'victor@torres.com') {
     return next();
   } else {
-    res.status(401).json({
+    res.json({
       errorResponse: {
         error: true,
         code: 401,
