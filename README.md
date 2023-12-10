@@ -1,31 +1,29 @@
-# Boilerplate | Template
+# Backend Bienes
 
-Template to make it easier you to develop your API's in node with express and using typescript.
+## Antes de empezar
+Asegurate de tener una cuenta en [Mongo db](https://www.mongodb.com)
+- Crea un cluster y consigue el string de conexión se vera algo asi:
+```mongodb+srv://<user>:<password>@<host>/bdname?retryWrites=true&w=majority```
+- Renombra el archivo ```.env.template``` por ```.env```
+- Pega el string de conexión en la primera variable ```MONGO_URI```
 
-## Getting Started
-First download the newest version of this repository.
+## Servidor de desarrollo
+- Clonar este repositorio
+- Abre una terminal y dirigete a tu proyecto
+- ``` npm i```
+- Finalmente ejecuta el comando ```npm run dev```
 
-Then, in your terminal, run the development server
-```bash
-npm run dev
-```
-Open [http://localhost:4000](http://localhost:4000) with your favorite api tester.
 
-### This boilerplate includes
-- cors
-- dotenv
-- express
-- jsonwebtoken
-- mongoose
-- bcrypt
-- eslint
+## Testing Postman
+- Importa el archivo ```postman_collection_bienesraices``` dentro de postman para empezar a probar los endpoints de este servicio web
 
-#### Acknowledgement
-
-This template was downloaded from this [repo](https://github.com/vspeed21/boilerplate-express-api-ts) on github
-
-We're open to contributions and suggestions from the community! If you have any improvements or ideas for this boilerplate, feel free to open an issue or submit a pull request on GitHub. Let's work together to make this boilerplate even better!
-
-If this template was helpful to you, consider showing your apreciation by giving it a star on Github.
+## Tecnologías Utilizadas
+- Servidor
+  - express: 4.18.2
+  - typescript: 4.9.4
+  - multer: 1.4.54
+  - jsonwebtoken: 9.0.0
+- Base de datos
+  - Mongo db
 
 Happy coding!
