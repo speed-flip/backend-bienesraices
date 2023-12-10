@@ -1,0 +1,200 @@
+{
+	"info": {
+		"_postman_id": "1d714615-f4fd-49bb-908e-ae88baf59b4f",
+		"name": "BienesRaices",
+		"description": "Endpoints del backend de bienes Raices Victor Torres T62241191",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "31048822"
+	},
+	"item": [
+		{
+			"name": "Inmueble",
+			"item": [
+				{
+					"name": "crear inmueble",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NmI2YzEwMjZkYmFhZDc5NGVmY2UyMSIsImlhdCI6MTcwMjEzNjE2NiwiZXhwIjoxNzAyMjIyNTY2fQ.4H3f6QaQJkEXxqjzQ2kggwciEOH9Dphr5EofrGGlbpw"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nombre",
+									"value": "casa 1",
+									"type": "text"
+								},
+								{
+									"key": "descripcion",
+									"value": "descripcion casa 1",
+									"type": "text"
+								},
+								{
+									"key": "habitaciones",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "sanitarios",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "tipo",
+									"value": "oficina",
+									"type": "text"
+								},
+								{
+									"key": "precio",
+									"value": "2500",
+									"type": "text"
+								},
+								{
+									"key": "imagenes",
+									"type": "file",
+									"src": "/C:/Users/vtorr/Desktop/favicon.png"
+								},
+								{
+									"key": "estado_propiedad",
+									"value": "alquiler",
+									"type": "text"
+								},
+								{
+									"key": "direccion",
+									"value": "sps honduras",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:4000/api/inmueble"
+					},
+					"response": []
+				},
+				{
+					"name": "get inmuebles",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NmJmNTUyMDAxNDZhOTQxM2QyZTM4YSIsImlhdCI6MTcwMjEzOTg3MywiZXhwIjoxNzAyMjI2MjczfQ.7GIn5yoXP3w6ElKLJSXxZEj8ifnWQWdFEJJORFl69sI"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:4000/api/inmueble"
+					},
+					"response": []
+				},
+				{
+					"name": "buscar inmuebles",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NmJlMGFlMjQ5NGFjNjU4YzVmMWIwMiIsImlhdCI6MTcwMTU2ODcyMCwiZXhwIjoxNzAxNjU1MTIwfQ.OxRFhK5nL7f0LhNx0PE4ptGfWKwpT88ho4Bd3OG-Ixk"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/inmueble/search?q=casa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"inmueble",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "casa"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Favorites",
+			"item": [
+				{
+					"name": "add Favorite",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NmJmNTUyMDAxNDZhOTQxM2QyZTM4YSIsImlhdCI6MTcwMTU3Mzk4NywiZXhwIjoxNzAxNjYwMzg3fQ.0Hz16v66Wciif7NBSyCxmuxnPE68cDZ2pAaNeWsiaBI"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"url": "http://localhost:4000/api/auth/add-favorite/656b70cbfd03defc5f150fbf"
+					},
+					"response": []
+				},
+				{
+					"name": "get favorites",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NmJmNTUyMDAxNDZhOTQxM2QyZTM4YSIsImlhdCI6MTcwMTU3Mzk4NywiZXhwIjoxNzAxNjYwMzg3fQ.0Hz16v66Wciif7NBSyCxmuxnPE68cDZ2pAaNeWsiaBI"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:4000/api/auth/get-favorites"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Crear usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"gabriel\",\r\n    \"username\": \"user\",\r\n    \"email\": \"gabriel@martinez.com\",\r\n    \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:4000/api/auth/signup"
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"gabriel@martinez.com\",\r\n    \"email2\": \"victor@torres.com\",\r\n    \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://192.168.100.41:4000/api/auth/login"
+			},
+			"response": []
+		}
+	]
+}
